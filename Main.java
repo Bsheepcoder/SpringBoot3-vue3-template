@@ -12,8 +12,16 @@ public class Main {
         System.out.println(sum);
         System.out.println("-----------------------------");
     }
-    public static void MyCode(int m, int n){
+    public static void MyCode(int m, int n) {
+        System.out.println("我是开发者my，下面是我写的代码");
+        int count = 0;
 
+        for(int i = 0; i < m; ++i) {
+            count += n;
+        }
+
+        System.out.println(count);
+        System.out.println("-----------------------------");
     }
 
 }
