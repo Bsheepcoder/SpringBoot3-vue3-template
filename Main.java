@@ -17,7 +17,7 @@ public class Main {
         int count = 0;
 
         for(int i = 0; i < m; ++i) {
-            count += n;
+            count += n;//合并分支的冲突
         }
 
         System.out.println(count);
