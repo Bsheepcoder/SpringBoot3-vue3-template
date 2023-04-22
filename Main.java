@@ -17,6 +17,18 @@ public class Main {
         int count = 0;
 
         for(int i = 0; i < m; ++i) {
+            count += n;//合并分支的冲突
+        }
+
+        System.out.println(count);
+        System.out.println("-----------------------------");
+    }
+    public static void MyCode(int m, int n) {
+//        idea分支测试
+        System.out.println("我是开发者txy，下面是我写的代码");
+        int count = 0;
+
+        for(int i = 0; i < m; ++i) {
             count += n;
         }
 
