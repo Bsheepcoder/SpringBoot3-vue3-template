@@ -42,10 +42,12 @@
 - my
 - txy
 - yjy
-## 其他
-- git测试
+## Git 测试
 
+<<<<<<< HEAD
 
 ## Git 测试
 
 ### dev_my
+=======
+>>>>>>> 57182223b05e9ad02b401f83ab2eeac1e11bf381
