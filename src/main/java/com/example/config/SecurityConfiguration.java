@@ -37,9 +37,10 @@ public class SecurityConfiguration {
     DataSource dataSource;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http,PersistentTokenRepository repository) throws Exception {
         return http
                 .authorizeHttpRequests()
+                .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -53,7 +54,7 @@ public class SecurityConfiguration {
                 .and()
                 .rememberMe()
                 .rememberMeParameter("remember")
-                .tokenRepository(this.tokenRepository())
+                .tokenRepository(repository)
                 .tokenValiditySeconds(3600 * 24 * 7)
                 .and()
                 .csrf()
@@ -68,12 +69,13 @@ public class SecurityConfiguration {
     }
 
     //持久化token仓库
-    private PersistentTokenRepository tokenRepository(){
+    @Bean
+    protected PersistentTokenRepository tokenRepository(){
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
         //设定数据源
         jdbcTokenRepository.setDataSource(dataSource);
         //一开始创建表,后面改成false
-        jdbcTokenRepository.setCreateTableOnStartup(true);
+        jdbcTokenRepository.setCreateTableOnStartup(false);
         return jdbcTokenRepository;
     }
 
@@ -113,6 +115,7 @@ public class SecurityConfiguration {
         else if(request.getRequestURI().endsWith("/logout"))
             response.getWriter().write(JSONObject.toJSONString(RestBean.success("成功退出登录")));
     }
+
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException{
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(JSONObject.toJSONString(RestBean.failure(401,exception.getMessage())));

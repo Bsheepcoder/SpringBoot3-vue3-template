@@ -12,8 +12,12 @@
             <div style="font-size: 30px;font-weight: bold">欢迎进入达梦大数据物流中台系统</div>
             <div style="margin-top: 10px">结合大数据平台，为客户提供数据获取、数据治理、数据共享等优质服务！</div>
         </div>
-        <div style="width: 400px;background-color: white">
-            <router-view/>
+        <div style="width: 400px;background-color: white;z-index: 1">
+            <router-view v-slot="{ Component }">
+                <transition name="el-fade-in-linear">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
         </div>
     </div>
 </template>
