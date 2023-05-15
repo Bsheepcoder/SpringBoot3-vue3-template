@@ -1,5 +1,3 @@
-
-
 <template>
     <div style="text-align: center;margin: 0 20px">
         <div style="margin-top: 150px">
@@ -41,8 +39,9 @@
     </div>
 </template>
 
-<style scoped>
-
+ 
+<style>
+/*alert 成功弹出框样式*/
 </style>
 
 <script setup>
@@ -57,9 +56,8 @@ const form = reactive({
     password:'',
     remember:false
 })
-
-const login = () =>{
-    if(!form.username || !form.password){
+const login = () =>{  
+    if(!form.username || !form.password){ 
         ElMessage.warning('请填写用户名和密码！')
     }else{
         post('/api/auth/login',{

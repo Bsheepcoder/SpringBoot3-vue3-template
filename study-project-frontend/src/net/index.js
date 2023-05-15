@@ -1,4 +1,5 @@
 import axios from "axios";
+import 'element-plus/es/components/message/style/css';
 import {ElMessage} from "element-plus";
 
 const defaultError =() =>ElMessage.error('发生了一些错误，请联系管理员')
