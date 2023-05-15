@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthorizeServiceImpl extends AuthorizeService {
+public class AuthorizeServiceImpl implements AuthorizeService {
     //引入mapper
     @Resource
     UserMapper mapper;
