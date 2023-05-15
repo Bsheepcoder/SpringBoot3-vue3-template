@@ -53,6 +53,7 @@ public class SecurityConfiguration {
                 .and()
                 .rememberMe()
                 .rememberMeParameter("remember")
+                .tokenRepository(this.tokenRepository())
                 .tokenValiditySeconds(3600 * 24 * 7)
                 .and()
                 .csrf()
@@ -66,9 +67,12 @@ public class SecurityConfiguration {
                 .build();
     }
 
+    //持久化token仓库
     private PersistentTokenRepository tokenRepository(){
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+        //设定数据源
         jdbcTokenRepository.setDataSource(dataSource);
+        //一开始创建表,后面改成false
         jdbcTokenRepository.setCreateTableOnStartup(true);
         return jdbcTokenRepository;
     }
