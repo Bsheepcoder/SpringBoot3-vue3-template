@@ -22,7 +22,24 @@ const router = createRouter({
     },{
       path:'/index',
       name:'index',
-      component:() => import('@/views/IndexView.vue')
+      component:() => import('@/views/IndexView.vue'),
+      children:[
+        {
+          path:'',
+          name:'datashow-index',
+          component:()=>import('@/components/datashow/index.vue')
+        },
+        {
+          path:'fileimport',
+          name:'datasource-fileimport',
+          component:()=>import('@/components/datasource/fileimport.vue')
+        },
+        {
+          path:'dbmove',
+          name:'datasource-dbmove',
+          component:()=>import('@/components/datasource/dbmove.vue')
+        },
+      ]
     }
   ]
 })
