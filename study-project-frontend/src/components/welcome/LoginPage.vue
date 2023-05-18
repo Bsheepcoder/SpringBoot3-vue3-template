@@ -1,6 +1,6 @@
 <template>
     <div style="text-align: center;margin: 0 20px">
-        <div style="margin-top: 150px">
+        <div style="margin-top: 130px">
             <div style="font-size: 25px">登录</div>
             <div style="font-size: 14px">在进入系统之前请先输入用户名和密码进行登录</div>
         </div>
