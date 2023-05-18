@@ -29,8 +29,9 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     @Resource
     UserMapper mapper;
 
-    @Resource
-    MailSender mailSender;
+    //
+//    @Resource
+//    MailSender mailSender;
 
 
     @Resource
