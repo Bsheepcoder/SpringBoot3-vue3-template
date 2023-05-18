@@ -53,7 +53,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     //邮箱验证实现
     @Override
     public boolean sendValidateEmail(String email){
-        /**
+        /*
          *  1.先生成应用的验证码
          *  2。把邮箱和对应的验证码直接放到Redis里面（过期时间3分钟，如果此时重新要求发邮件，那么只要剩余时间低于2分钟，就可以重新发一次，重复此流程）
          *  3.发送验证码到指定邮箱
@@ -71,7 +71,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         try{
             //发送邮件
             mailSender.send(message);
-            template.opsForValue().set();
+            //template.opsForValue().set();
             return true;
         }  catch (MailException e){
             e.printStackTrace();

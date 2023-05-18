@@ -12,7 +12,4 @@ public interface UserMapper {
     @Select("select * from user where username = #{text} or mail = #{text}")
     Account findAccountByNameOrEmail(String text);
 
-
-    @Select("select * from user where username = #{text} or mail = #{text}")
-    List<Account> outputuserlist(String text);
 }
