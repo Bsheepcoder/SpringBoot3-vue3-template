@@ -23,7 +23,7 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item prop="password_repeat">
-                    <el-input  v-model="form.password_repeat"  type="password" placeholder="重复输入密码">
+                    <el-input  v-model="form.password_repeat" :maxLength="16" type="password" placeholder="重复输入密码">
                         <template #prefix>
                             <el-icon><Lock /></el-icon>
                         </template>
@@ -39,7 +39,7 @@
                 <el-form-item prop="code">
                     <el-row :gutter="10" style="display:flow; width:100%;">
                         <el-col :span="17" style="display: flex">
-                            <el-input v-model="form.code" type="text" :maxlength="6" placeholder="验证码">
+                            <el-input v-model="form.code" :maxLength="6" type="text" :maxlength="6" placeholder="验证码">
                                 <template #prefix>
                                     <el-icon><EditPen /></el-icon>
                                 </template>
@@ -134,7 +134,15 @@ const onValidate = (prop,isValid)=>{
 const register = () => {
     formRef.value.validate((isValid)=>{
         if(isValid){
-
+            post('/api/auth/register',{
+                username:form.username,
+                password:form.password,
+                email: form.email,
+                code:form.code
+            },(message)=>{
+                ElMessage.success(message)
+                router.push("/")
+            })
         }else{
             ElMessage.warning('请完整填写上述表单注册内容')
         }

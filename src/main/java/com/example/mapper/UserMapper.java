@@ -2,6 +2,7 @@ package com.example.mapper;
 
 
 import com.example.entity.Account;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -11,4 +12,7 @@ import java.util.List;
 public interface UserMapper {
     @Select("select * from user where username = #{text} or mail = #{text}")
     Account findAccountByNameOrEmail(String text);
+
+    @Insert("insert into user (username,password,email) values(#{username},#{password},#{email})")
+    int createAccount(String username,String password,String email);
 }
