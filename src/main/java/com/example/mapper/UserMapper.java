@@ -11,5 +11,4 @@ import java.util.List;
 public interface UserMapper {
     @Select("select * from user where username = #{text} or mail = #{text}")
     Account findAccountByNameOrEmail(String text);
-
 }

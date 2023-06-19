@@ -59,7 +59,7 @@
 
         </div>
         <div style="margin-top: 30px">
-            <el-button style="width: 200px" type="warning" @click="register">注册</el-button>
+            <el-button style="width: 200px" type="warning" @click="register">立即注册</el-button>
         </div>
         <div style="margin-top: 20px">
            <el-text style="align-items: center;" >已有账号？<el-link style="vertical-align: 0;" @click="router.push('/')">立即登录</el-link> </el-text>
@@ -87,7 +87,7 @@ const form = reactive(
 )
 const validateUsername = (rule, value , callback) => {
   if (value === '') {
-    callback(new Error('请输入用户名:'))
+    callback(new Error('请输入用户名'))
   } else if(!/^[a-zA-Z0-9\u4e00-\u9fa5]+$/.test(value)) {
     callback(new Error('用户名不能包含特殊字符，只能是中文、英文')) 
   }else{
@@ -96,7 +96,7 @@ const validateUsername = (rule, value , callback) => {
 }
 const validatePassword = (rule, value, callback) => {
   if (value === '') {
-    callback(new Error('请再次输入密码:'))
+    callback(new Error('请再次输入密码'))
   } else if (value !== form.password) {
     callback(new Error("两次输入的密码不一致"))
   } else {
@@ -123,7 +123,7 @@ const rules = {
         {required: true,message: '请输入获取的验证码',tigger: 'blur'},
     ]
 }
-const formRef = ref()
+const formRef = ref() //获取表单信息
 const isEmailValid = ref('false')
 const isSendEmail = ref(false)
 const coldTime = ref(0)

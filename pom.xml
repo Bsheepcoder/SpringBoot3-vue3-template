@@ -35,12 +35,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.dm</groupId>-->
+<!--			<artifactId>DmJdbcDriver</artifactId>-->
+<!--			<version>1.8</version>-->
+<!--			<scope>system</scope>-->
+<!--			<systemPath>${project.basedir}/src/lib/DmJdbcDriver18.jar</systemPath>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
@@ -94,8 +100,10 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<includeSystemScope>true</includeSystemScope>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 

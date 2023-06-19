@@ -1,7 +1,7 @@
 <template>
   <el-container class="common_layout">
     <el-container style="height: auto">
-      <el-header style="padding: 0">
+      <el-header style="padding: 0;height: 80px">
         <div id="logo">
           <img src="../img/logo.png" alt="" id="img1" />
           <span id="title">物流中台系统</span>
