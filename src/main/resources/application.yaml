@@ -21,3 +21,4 @@ spring:
       database: 0
       host: 47.115.218.160
       port: 6379
+      password: Cqzod@123
