@@ -22,7 +22,7 @@
                     <el-checkbox v-model="form.remember" label="记住我"/>
                 </el-col>
                 <el-col :span="12">
-                    <el-link>忘记密码?</el-link>
+                    <el-link @click="router.push('forget')"  >忘记密码?</el-link>
                 </el-col>
             </el-row>
         </div>
@@ -56,6 +56,7 @@ const form = reactive({
     password:'',
     remember:false
 })
+
 const login = () =>{  
     if(!form.username || !form.password){ 
         ElMessage.warning('请填写用户名和密码！')

@@ -25,17 +25,25 @@ public class AuthorizeController {
 
 
     //邮箱验证
-    @PostMapping("/valid-email")
-    public RestBean<String> validateEmail(@Pattern (regexp = EMAIL_REGEX )@RequestParam("email") String email, HttpSession session){
+    @PostMapping("/valid-register-email")
+    public RestBean<String> validateRegisterEmail(@Pattern (regexp = EMAIL_REGEX )@RequestParam("email") String email, HttpSession session){
 
 
-        String s =  service.sendValidateEmail(email,session.getId());
+        String s =  service.sendValidateEmail(email,session.getId(),false);
         if(s == null)
             return RestBean.success("邮件已发送,请注意查收");
         else
             return RestBean.failure(400,s);
     }
 
+    @PostMapping("/valid-reset-email")
+    public RestBean<String> validateResetEmail(@Pattern (regexp = EMAIL_REGEX )@RequestParam("email") String email, HttpSession session){
+        String s =  service.sendValidateEmail(email,session.getId(),true);
+        if(s == null)
+            return RestBean.success("邮件已发送,请注意查收");
+        else
+            return RestBean.failure(400,s);
+    }
 
 
     //用户注册
@@ -52,4 +60,31 @@ public class AuthorizeController {
             return RestBean.failure(400, s);
         }
     }
+
+    @PostMapping("/start-rest")
+    public RestBean<String> startRest(@RequestParam("email") String email,
+                                      @Length(min = 6,max = 6) @RequestParam("code") String code,
+                                      HttpSession session){
+        String s = service.validateOnly(email,code,session.getId());
+        if(s == null){
+            session.setAttribute("rest-password",email);
+            return RestBean.success();
+        }else {
+            return RestBean.failure(400,s);
+        }
+    }
+
+    @PostMapping("/do-rest")
+    public RestBean<String> restPassword(@Length(min = 6,max = 16) @RequestParam("password") String password,HttpSession session){
+        String email = (String)session.getAttribute("rest-password");
+        if(email == null){
+            return RestBean.failure(401,"请先进行邮箱验证");
+        }else if(service.resetPassword(password,email)){
+            session.removeAttribute("reset-password");
+            return RestBean.success("密码重置成功");
+        }else{
+            return RestBean.failure(500,"内部错误，请联系管理员");
+        }
+    }
+
 }

@@ -94,6 +94,8 @@ const validateUsername = (rule, value , callback) => {
     callback()
   }
 }
+
+
 const validatePassword = (rule, value, callback) => {
   if (value === '') {
     callback(new Error('请再次输入密码'))
