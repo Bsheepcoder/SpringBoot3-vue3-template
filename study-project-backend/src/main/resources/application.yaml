@@ -1,0 +1,23 @@
+spring:
+#  datasource:
+#    driver-class-name: dm.jdbc.driver.DmDriver
+#    url: jdbc:dm://47.115.201.125:5236?schema=PRODUCTION
+#    username: SYSDBA
+#    password: SYSDBA001
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.115.218.160:3306/db_project
+    username: root
+    password: Cqzod@123
+  mail:
+    host: smtp.163.com
+    username: 18947336207@163.com
+    password:
+    properties:
+      from: qxd
+  data:
+    redis:
+      database: 0
+      host: 47.115.218.160
+      port: 6379
+      password:
