@@ -6,18 +6,18 @@ spring:
 #    password: SYSDBA001
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.115.218.160:3306/db_project
+    url: jdbc:mysql://#:3306/db_project
     username: root
     password: #
   mail:
     host: smtp.163.com
-    username: 18947336207@163.com
+    username: #
     password:
     properties:
       from: qxd
   data:
     redis:
       database: 0
-      host: 47.115.218.160
+      host: #
       port: 6379
       password:
